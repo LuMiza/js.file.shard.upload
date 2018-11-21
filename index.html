@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload File</title>
+    <style type="text/css">
+        .file-container{
+            width: 50%;
+            margin: 10% auto;
+        }
+        /*https://github.com/lovefc/fcup
+        */
+        .process{
+            width:100%;
+            height:10px;
+            background-color: #F27E7E;
+        }
+        .file-input{
+            width:100px;
+            height: 38px;
+            opacity: 0;
+            position: absolute;
+            display: block;
+            z-index: 9;
+        }
+        .file-box{
+            width: 100px;
+            height: 38px;
+            display: inline-block;
+            background-color: #525252;
+            color: #FFFFFF;
+            line-height: 38px;
+            text-align: center;
+            position: relative;
+        }
+    </style>
+    <script type="text/javascript" src="file.shard.upload.js"></script>
+</head>
+<body>
+
+    <div class="process"></div>
+    <div class="file-container">
+        <!--<form action="./upload.php">-->
+        <form action="">
+            <div class="file-box">
+                <input id="upload-file" type="file" name="file" class="file-input">
+                文件上传
+            </div>
+            <input type="button" value="上传" id="upload-bt">
+        </form>
+    </div>
+<script type="text/javascript">
+
+    window.onload = function(){
+        document.getElementById('upload-file').onchange = function(){
+
+            /*$File({
+                file: this,
+                url: './upload.php'
+            }).upload();*/
+        }
+
+        document.getElementById('upload-bt').onclick = function(){
+
+            $File({
+                file: document.getElementById('upload-file'),//【必须】input[type="file"]对象
+                url: './upload.php'//【必须】文件上传服务器地址
+                //name: 'upload',//【可选】input[type="file"] 的name,未定义默认file
+                //data: {count:1},//【可选】额外传输数据
+            }).upload();
+        }
+    };
+
+
+
+</script>
+</body>
+</html>
